@@ -39,7 +39,7 @@ typedef struct juego juego_t;
 juego_t *juego_crear();
 
 /**
- * Carga un archivo de pokemon (con el formato del TP1).
+ * Carga un archivo de pokemon.
  *
  * Devuelve POKEMON_INSUFICIENTES si no hay pokemon suficientes como para jugar.
  *
@@ -63,7 +63,7 @@ lista_t *juego_listar_pokemon(juego_t *juego);
  *
  * Retorna TODO_OK o ERROR_GENERAL en caso de error.
  *
- * Opcionalmente puede devolver POKEMON_REPETIDO o POKEMON_INEXISTENTE.
+ * Ocasionalmente puede devolver POKEMON_REPETIDO o POKEMON_INEXISTENTE.
  */
 JUEGO_ESTADO juego_seleccionar_pokemon(juego_t *juego, JUGADOR jugador,
                                        const char *nombre1, const char *nombre2,
