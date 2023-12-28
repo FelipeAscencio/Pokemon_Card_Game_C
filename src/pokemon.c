@@ -25,6 +25,36 @@ struct info_pokemon {
 // PRE: - .
 // POST: Ordena por orden alfabetico creciente los pokemon del puntero
 // informacion.
+void ordenar_informacion(struct info_pokemon *informacion);
+
+// PRE: - .
+// POST: Devuelve true en el caso de que haya podido asignar la memoria
+// necesaria.
+bool validar_memoria_ataques(struct pokemon **pokemon_temporal,
+                             char nombre_pokemon[MAX_NOMBRE],
+                             enum TIPO tipo_pokemon);
+
+// PRE: Todas las variables en el argumento deben estar cargadas correctamente.
+// POST: Carga los ataques al nuevo pokemon.
+void cargar_datos_ataques(struct pokemon **pokemon_temporal,
+                          struct ataque pre_ataques[MAX_ATAQUES]);
+
+// PRE: Todas las variables en el argumento deben estar cargadas correctamente.
+// POST: Carga al nuevo pokemon y devuelve true, en caso de no poder cargarlo
+// devuelve false.
+bool cargar_datos_pokemon(struct info_pokemon *informacion,
+                          char nombre_pokemon[MAX_NOMBRE],
+                          enum TIPO tipo_pokemon,
+                          struct ataque pre_ataques[MAX_ATAQUES]);
+
+// PRE: enum TIPO debe estar definido correctamente.
+// POST: Devuelve el tipo correspondiente a cada caso en formato "enum TIPO".
+enum TIPO asignar_tipo(char letra_tipo);
+
+// PRE: - .
+// POST: Modifica el pokemon en caso de poder haces los cambios, sino corta.
+void leer_archivo(FILE *archivo, struct info_pokemon *informacion);
+
 void ordenar_informacion(struct info_pokemon *informacion) {
   int cantidad_a_ordenar = informacion->cantidad_pokemones;
   struct pokemon *auxiliar;
@@ -47,9 +77,6 @@ void ordenar_informacion(struct info_pokemon *informacion) {
   }
 }
 
-// PRE: - .
-// POST: Devuelve true en el caso de que haya podido asignar la memoria
-// necesaria.
 bool validar_memoria_ataques(struct pokemon **pokemon_temporal,
                              char nombre_pokemon[MAX_NOMBRE],
                              enum TIPO tipo_pokemon) {
@@ -69,8 +96,6 @@ bool validar_memoria_ataques(struct pokemon **pokemon_temporal,
   return true;
 }
 
-// PRE: Todas las variables en el argumento deben estar cargadas correctamente.
-// POST: Carga los ataques al nuevo pokemon.
 void cargar_datos_ataques(struct pokemon **pokemon_temporal,
                           struct ataque pre_ataques[MAX_ATAQUES]) {
   int j = 0;
@@ -81,9 +106,6 @@ void cargar_datos_ataques(struct pokemon **pokemon_temporal,
   }
 }
 
-// PRE: Todas las variables en el argumento deben estar cargadas correctamente.
-// POST: Carga al nuevo pokemon y devuelve true, en caso de no poder cargarlo
-// devuelve false.
 bool cargar_datos_pokemon(struct info_pokemon *informacion,
                           char nombre_pokemon[MAX_NOMBRE],
                           enum TIPO tipo_pokemon,
@@ -109,8 +131,6 @@ bool cargar_datos_pokemon(struct info_pokemon *informacion,
   return false;
 }
 
-// PRE: enum TIPO debe estar definido correctamente.
-// POST: Devuelve el tipo correspondiente a cada caso en formato "enum TIPO".
 enum TIPO asignar_tipo(char letra_tipo) {
   if (letra_tipo == 'N') {
     return NORMAL;
@@ -129,8 +149,6 @@ enum TIPO asignar_tipo(char letra_tipo) {
   }
 }
 
-// PRE: - .
-// POST: Modifica el pokemon en caso de poder haces los cambios, sino corta.
 void leer_archivo(FILE *archivo, struct info_pokemon *informacion) {
   char linea[MAX_LINEA];
   char nombre_pokemon[MAX_NOMBRE];
@@ -177,8 +195,6 @@ void leer_archivo(FILE *archivo, struct info_pokemon *informacion) {
   }
 }
 
-// PRE: - .
-// POST: Devuelve un puntero a la información leida, o NULL en caso de falla.
 informacion_pokemon_t *pokemon_cargar_archivo(const char *path) {
   if (path == NULL) {
     return NULL;
@@ -208,8 +224,6 @@ informacion_pokemon_t *pokemon_cargar_archivo(const char *path) {
   }
 }
 
-// PRE: - .
-// POST: Si encuentra un pokemon en "ip" con el mismo nombre lo devuelve.
 pokemon_t *pokemon_buscar(informacion_pokemon_t *ip, const char *nombre) {
   if (nombre == NULL) {
     return NULL;
@@ -227,11 +241,6 @@ pokemon_t *pokemon_buscar(informacion_pokemon_t *ip, const char *nombre) {
   return NULL;
 }
 
-// PRE: - .
-// POST: Devuelve la cantidad de pokemones cargados.
-// ACLARACION: El caso de cantidad_cargada == 2, devuelve 1 por
-// un bug del programa, al cargar uno, en memoria lo carga sin problema
-// pero en cuanto a la cantidad, se le suma uno de forma extraña.
 int pokemon_cantidad(informacion_pokemon_t *ip) {
   if (ip == NULL) {
     return 0;
@@ -240,8 +249,6 @@ int pokemon_cantidad(informacion_pokemon_t *ip) {
   return ip->cantidad_pokemones;
 }
 
-// PRE: - .
-// POST: En caso de ser un pokemon valido, devuelve su nombre.
 const char *pokemon_nombre(pokemon_t *pokemon) {
   if (pokemon == NULL) {
     return NULL;
@@ -250,8 +257,6 @@ const char *pokemon_nombre(pokemon_t *pokemon) {
   return pokemon->nombre;
 }
 
-// PRE: - .
-// POST: Devuelve el tipo del pokemon recibido, o NORMAL si hay algun problema.
 enum TIPO pokemon_tipo(pokemon_t *pokemon) {
   if (pokemon == NULL) {
     return NORMAL;
@@ -260,8 +265,6 @@ enum TIPO pokemon_tipo(pokemon_t *pokemon) {
   return pokemon->tipo;
 }
 
-// PRE: - .
-// POST: Devuelve el ataque del pokemon si lo encuentra, NULL en caso de error.
 const struct ataque *pokemon_buscar_ataque(pokemon_t *pokemon,
                                            const char *nombre) {
   if (pokemon == NULL) {
@@ -283,9 +286,6 @@ const struct ataque *pokemon_buscar_ataque(pokemon_t *pokemon,
   return NULL;
 }
 
-// PRE: - .
-// POST: Aplica la funcion f a cada pokemon y devuelve la cantidad de pokemon
-//       a los que fue aplicada.
 int con_cada_pokemon(informacion_pokemon_t *ip, void (*f)(pokemon_t *, void *),
                      void *aux) {
   if (ip == NULL) {
@@ -310,9 +310,6 @@ int con_cada_pokemon(informacion_pokemon_t *ip, void (*f)(pokemon_t *, void *),
   return cantidad_aplicaciones;
 }
 
-// PRE: - .
-// POST: Aplica la funcion f a cada ataque de un pokemon, devuelve la
-//       cantidad de ataques a los que se les aplico la funcion.
 int con_cada_ataque(pokemon_t *pokemon,
                     void (*f)(const struct ataque *, void *), void *aux) {
   if (pokemon == NULL) {
@@ -335,8 +332,6 @@ int con_cada_ataque(pokemon_t *pokemon,
   return cantidad_ataques;
 }
 
-// PRE: - .
-// POST: Libera la memoria reservada en el programa.
 void pokemon_destruir_todo(informacion_pokemon_t *ip) {
   int i = 0;
   int j = 0;
