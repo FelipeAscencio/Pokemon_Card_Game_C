@@ -10,8 +10,6 @@ typedef struct adversario adversario_t;
  * Crea un adversario asignandole un listado de pokemon_t que puede utilizar
  * durante el juego.
  *
- * El adversario NO deberá modificar la lista ni liberarla.
- *
  * Devuelve NULL en caso de error.
  */
 adversario_t *adversario_crear(lista_t *);
@@ -43,15 +41,12 @@ bool adversario_pokemon_seleccionado(adversario_t *, char *nombre1,
  * Devuelve la próxima jugada del adversario para el turno actual. La jugada
  * debe tener en cuenta las reglas del juego y adherirse a ellas (no se puede
  * utilizar el mismo movimientos dos veces, etc).
- *
- * Este método es el principal del adversario y donde se puede implementar la
- * lógica para que el juego sea mas interesante.
  */
 jugada_t adversario_proxima_jugada(adversario_t *);
 
 /**
- * Le informa al adversario cuál fue la última jugada del jugador. Esta
- * información puede ser utilizada para cambiar la estrategia del juego.
+ * Le informa al adversario cuál fue la última jugada del jugador.
+ * Al llamar a esta funcion el adversario sabe que el turno fue exitoso.
  */
 void adversario_informar_jugada(adversario_t *, jugada_t);
 
