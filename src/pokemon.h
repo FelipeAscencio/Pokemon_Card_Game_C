@@ -2,11 +2,12 @@
 #define POKEMON_H_
 
 #include "tipo.h"
+
 typedef struct pokemon pokemon_t;
 typedef struct info_pokemon informacion_pokemon_t;
 
 /**
- * Lee un archivo con pokemones (con el formato especificado en el enunciado) y
+ * Lee un archivo con pokemones con el formato especificado y
  * devuelve un puntero a la información leida.
  *
  * En caso de encontrarse un error con uno de los pokemon leidos, se debe
@@ -29,12 +30,12 @@ pokemon_t *pokemon_buscar(informacion_pokemon_t *ip, const char *nombre);
 int pokemon_cantidad(informacion_pokemon_t *ip);
 
 /**
- *Devuevle el nombre del pokemon
+ *Devuelve el nombre del pokemon
  */
 const char *pokemon_nombre(pokemon_t *pokemon);
 
 /**
- *Devuevle el tipo del pokemon. Por defecto devuelve NORMAL.
+ *Devuelve el tipo del pokemon. Por defecto devuelve NORMAL.
  */
 enum TIPO pokemon_tipo(pokemon_t *pokemon);
 
