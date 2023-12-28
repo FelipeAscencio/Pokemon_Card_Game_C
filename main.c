@@ -430,7 +430,7 @@ int main(int argc, char *argv[]) {
             "\n\n\nEsto si que no me lo esperaba, que empate mas increible.\n");
         printf("Espero verte pronto para desempatar el resultado.\n\n");
       } else {
-        printf("\n\n\nWow eso estuvo increible, tu rival lo hizo increible.\n");
+        printf("\n\n\nWow eso estuvo asombroso, tu rival lo hizo increible.\n");
         printf("No importa que hayas perdido, puedes volver a intentarlo "
                "siempre que quieras.\n\n");
       }
