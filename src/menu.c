@@ -33,7 +33,7 @@ menu_t *menu_crear() {
 void menu_agregar_comando(menu_t *menu, char simbolo_comando, char *descripcion,
                           bool (*funcion)(void *)) {
   if (menu == NULL) {
-    printf("No se puede agregar un comando en un menu inexistente\n");
+    printf("No se puede agregar un comando en un menu inexistente.\n");
     return;
   }
 
@@ -43,7 +43,7 @@ void menu_agregar_comando(menu_t *menu, char simbolo_comando, char *descripcion,
   }
 
   if (i == CANTIDAD_COMANDOS) {
-    printf("El menu ya esta lleno, no se pueden agregar mas comandos\n");
+    printf("El menu ya esta lleno, no se pueden agregar mas comandos.\n");
     return;
   }
 
@@ -54,7 +54,7 @@ void menu_agregar_comando(menu_t *menu, char simbolo_comando, char *descripcion,
 
 void menu_listar_comandos(menu_t *menu) {
   if (menu == NULL) {
-    printf("No se puede listar un menu vacio\n");
+    printf("No se puede listar un menu vacio.\n");
     return;
   }
 
@@ -69,7 +69,7 @@ void menu_listar_comandos(menu_t *menu) {
 MENU_RESULTADO menu_ejecutar_comando(menu_t *menu, char simbolo_comando,
                                      void *contexto) {
   if (menu == NULL) {
-    printf("No hay comandos en un menu nulo\n");
+    printf("No hay comandos en un menu nulo.\n");
     return MENU_INEXISTENTE;
   }
 
