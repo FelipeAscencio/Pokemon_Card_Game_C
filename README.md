@@ -171,6 +171,21 @@ void menu_destruir(menu_t *menu) es O(1): Release the memory reserved for the me
 
 The score is calculated based on the type of the attack and the type of the pokemon receiving the attack. The type of the attacking pokemon does not influence the score. The possible combinations and expected logic are documented in `juego_jugar_turno`.
 
+### Required text format
+
+As explained before, the game can be played with any type of "valid" pokemon file, but to create our own file, we must understand what we take as valid.
+This is very easy, the format is the same that we can find in the 2 files in the "examples" folder.
+This format is based on separating with ";" the terms.
+And the structure is based on:
+pokemon;type
+attack1;type;power
+attack2;type;power
+attack3;type;power
+The only rules to follow within this structure are:
+- Do not exceed the maximum number of characters in names.
+- The power of attacks is always a positive number.
+- The type of attacks/pokemons must be one of the possible ones (in order to simplify the type table, not all of the types from the original saga are included).
+
 ---
 
 ## How to play?
