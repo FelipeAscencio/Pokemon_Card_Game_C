@@ -1,0 +1,12 @@
+Pikachu;E
+Rayo;E;5
+Latigo;N;1
+Chispa;E;1
+Charmander;F
+Furia;N;2
+Lanzallamas;F;4
+Ascuas;F;1
+Larvitar;R
+Golpe;N;1
+Terremoto;R;3
+Avalancha;R;3
