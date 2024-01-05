@@ -174,8 +174,6 @@ void jugar()
 
 int main()
 {
-	pruebas_nuevo_grupo("------------ PRUEBAS DEL TP1 ------------");
-
 	pruebas_nuevo_grupo("CREAR UN JUEGO");
 	crear_juego();
 
