@@ -6,7 +6,7 @@
 bash .tests/test.sh
 ```
 
-- To play:
+- To play (being inside the general folder containing the files):
 
 ```bash
 make
