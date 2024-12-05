@@ -12,8 +12,6 @@ bash .tests/test.sh
 make
 ```
 
----
-
 ## Introduction
 
 This project is my second game, the game is about a "pokemon card game", you will battle against the computer in a turn battle with differents pokemons depending the file you load to play.
@@ -123,7 +121,7 @@ struct menu {
 
 ---
 
-## Testing
+# Testing
 
 For test the code, i implemented my own tests.
 
@@ -133,7 +131,7 @@ Also add the analysis with valgrind to see if you have memory leaks, since the p
 
 ---
 
-## ADT MENU
+# ADT MENU
 
 Finally, in case you want to understand/reuse the "ADT MENU", I leave a brief explanation of the computational complexity and functions.
 
@@ -149,7 +147,7 @@ void menu_destruir(menu_t *menu) es O(1): Release the memory reserved for the me
 
 ---
 
-## Rules
+# Rules
 
 - The game requires 2 players.
 - At the beginning of the game, players are presented with a list of available Pokémon.
@@ -167,11 +165,11 @@ void menu_destruir(menu_t *menu) es O(1): Release the memory reserved for the me
   - Once a Pokémon's attack has been used, it can no longer be used during the game.
 - At the end of the game, the player with the most points wins.
 
-### Score
+## Score
 
 The score is calculated based on the type of the attack and the type of the pokemon receiving the attack. The type of the attacking pokemon does not influence the score. The possible combinations and expected logic are documented in `juego_jugar_turno`.
 
-### Required text format
+## Required text format
 
 As explained before, the game can be played with any type of "valid" pokemon file, but to create our own file, we must understand what we take as valid.
 This is very easy, the format is the same that we can find in the 2 files in the "examples" folder.
@@ -188,7 +186,7 @@ The only rules to follow within this structure are:
 
 ---
 
-## How to play?
+# How to play?
 
 Playing is very easy, simply download the "repository", enter the folder that contains the files, run the "make" command in the console and then just type the letter "a" to enter the help menu.
 The implemented menu will be responsible for teaching you everything you need to play.
